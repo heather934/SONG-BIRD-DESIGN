@@ -35,12 +35,20 @@
 //
 // ══════════════════════════════════════════════════════════════════
 
-const CORS = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'POST, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type',
-  'Content-Type': 'application/json',
-};
+const ALLOWED_ORIGINS = new Set([
+  'https://songbirdpublishdesigns.com',
+  'https://www.songbirdpublishdesigns.com',
+]);
+
+function corsHeaders(request) {
+  const origin = request.headers.get('Origin');
+  return {
+    'Access-Control-Allow-Origin': ALLOWED_ORIGINS.has(origin) ? origin : 'https://songbirdpublishdesigns.com',
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type',
+    'Content-Type': 'application/json',
+  };
+}
 
 const REQUIRED = ['name', 'phone', 'business', 'package', 'requestedTime'];
 const MAX_LEN = 300;
@@ -49,7 +57,32 @@ function clean(value) {
   return String(value).slice(0, MAX_LEN).replace(/[<>]/g, '').trim();
 }
 
+// Second layer of rate limiting, on top of the edge rule on /api/book.
+// The edge rule catches bursts (3 req / 10 sec / IP); this catches an
+// abuser who paces requests just under that threshold over time.
+const RATE_LIMIT_MAX = 8;
+const RATE_LIMIT_WINDOW_SECONDS = 60 * 60;
+
+async function isRateLimited(env, ip) {
+  if (!ip) return false;
+  const key = `ratelimit:book:${ip}`;
+  const raw = await env.CONTENT.get(key);
+  const count = raw ? parseInt(raw, 10) : 0;
+  if (count >= RATE_LIMIT_MAX) return true;
+  await env.CONTENT.put(key, String(count + 1), { expirationTtl: RATE_LIMIT_WINDOW_SECONDS });
+  return false;
+}
+
 export async function onRequestPost(context) {
+  const CORS = corsHeaders(context.request);
+
+  const ip = context.request.headers.get('CF-Connecting-IP');
+  if (await isRateLimited(context.env, ip)) {
+    return new Response(JSON.stringify({ ok: false, error: 'Too many requests. Please try again later.' }), {
+      status: 429, headers: CORS,
+    });
+  }
+
   let body;
   try {
     body = await context.request.json();
@@ -147,6 +180,6 @@ export async function onRequestPost(context) {
   }
 }
 
-export async function onRequestOptions() {
-  return new Response(null, { status: 204, headers: CORS });
+export async function onRequestOptions(context) {
+  return new Response(null, { status: 204, headers: corsHeaders(context.request) });
 }

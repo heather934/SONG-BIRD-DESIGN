@@ -6,7 +6,19 @@
 // Both are layered on top of the scheduler's existing simulated pattern,
 // not a replacement for it.
 
-const CORS = { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json' };
+const ALLOWED_ORIGINS = new Set([
+  'https://songbirdpublishdesigns.com',
+  'https://www.songbirdpublishdesigns.com',
+]);
+
+function corsHeaders(request) {
+  const origin = request.headers.get('Origin');
+  return {
+    'Access-Control-Allow-Origin': ALLOWED_ORIGINS.has(origin) ? origin : 'https://songbirdpublishdesigns.com',
+    'Content-Type': 'application/json',
+  };
+}
+
 const KEY = 'schedule:blocked';
 const MAX_BLOCKED = 500;
 const MAX_CLOSED = 100;
@@ -16,11 +28,13 @@ function clean(v, max = 40) {
 }
 
 export async function onRequestGet(context) {
+  const CORS = corsHeaders(context.request);
   const raw = await context.env.CONTENT.get(KEY);
   return new Response(raw || '{"blockedSlots":[],"closedDates":[]}', { headers: CORS });
 }
 
 export async function onRequestPut(context) {
+  const CORS = corsHeaders(context.request);
   let body;
   try {
     body = await context.request.json();
@@ -44,6 +58,6 @@ export async function onRequestPut(context) {
   return new Response(JSON.stringify({ ok: true, ...data }), { headers: CORS });
 }
 
-export async function onRequestOptions() {
-  return new Response(null, { status: 204, headers: CORS });
+export async function onRequestOptions(context) {
+  return new Response(null, { status: 204, headers: corsHeaders(context.request) });
 }

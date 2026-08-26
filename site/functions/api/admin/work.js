@@ -4,7 +4,19 @@
 // — the admin UI sends the full edited array each time, which keeps this
 // endpoint simple and avoids partial-update bugs.
 
-const CORS = { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json' };
+const ALLOWED_ORIGINS = new Set([
+  'https://songbirdpublishdesigns.com',
+  'https://www.songbirdpublishdesigns.com',
+]);
+
+function corsHeaders(request) {
+  const origin = request.headers.get('Origin');
+  return {
+    'Access-Control-Allow-Origin': ALLOWED_ORIGINS.has(origin) ? origin : 'https://songbirdpublishdesigns.com',
+    'Content-Type': 'application/json',
+  };
+}
+
 const KEY = 'content:work';
 const MAX_ITEMS = 24;
 
@@ -13,11 +25,13 @@ function clean(v, max = 400) {
 }
 
 export async function onRequestGet(context) {
+  const CORS = corsHeaders(context.request);
   const raw = await context.env.CONTENT.get(KEY);
   return new Response(raw || '[]', { headers: CORS });
 }
 
 export async function onRequestPut(context) {
+  const CORS = corsHeaders(context.request);
   let body;
   try {
     body = await context.request.json();
@@ -46,6 +60,6 @@ export async function onRequestPut(context) {
   return new Response(JSON.stringify({ ok: true, items: cleaned }), { headers: CORS });
 }
 
-export async function onRequestOptions() {
-  return new Response(null, { status: 204, headers: CORS });
+export async function onRequestOptions(context) {
+  return new Response(null, { status: 204, headers: corsHeaders(context.request) });
 }

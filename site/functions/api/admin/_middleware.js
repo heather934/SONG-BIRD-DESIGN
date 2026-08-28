@@ -146,7 +146,7 @@ export async function onRequest(context) {
   try {
     payload = await verifyAccessToken(token, env);
   } catch (err) {
-    return deny("Sign-in could not be verified.");
+    return deny("Sign-in could not be verified: " + err.message);
   }
 
   const allowed = env.ADMIN_EMAIL.split(",").map((e) => e.trim().toLowerCase());

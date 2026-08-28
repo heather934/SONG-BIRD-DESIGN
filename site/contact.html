@@ -48,6 +48,10 @@
       </div>
       <div>
         <form id="enquiry" novalidate>
+          <div class="hp-field" aria-hidden="true">
+            <label for="enquiryWebsite">Leave this field blank</label>
+            <input id="enquiryWebsite" name="website" type="text" tabindex="-1" autocomplete="off">
+          </div>
           <div class="two">
             <div class="field">
               <label for="name">Your name</label>
@@ -80,6 +84,7 @@
           <button class="btn btn-primary" type="submit">Send message</button>
           <p class="form-note">Or just call. I answer my own phone.</p>
           <p class="sent" id="sent">Message sent. You'll hear back within one business day.</p>
+          <p class="sent err" id="enquiryError">That didn't go through. Please try again, or call/text me directly.</p>
         </form>
       </div>
     </div>

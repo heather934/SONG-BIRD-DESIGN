@@ -433,7 +433,7 @@ blockquote footer{
 @media (max-width:760px){.quote-grid{grid-template-columns:1fr}}
 
 /* ---------- pricing ---------- */
-.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;align-items:stretch}
+.price-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;align-items:stretch}
 .tier{background:var(--marble);border:1px solid rgba(51,48,43,.13);border-radius:2px;padding:2rem 1.7rem;display:flex;flex-direction:column}
 .tier.feature{
   background:linear-gradient(180deg,#fbf9f6,#f2efe9);
@@ -455,7 +455,8 @@ blockquote footer{
 .amount small{font-size:.85rem;font-family:var(--body);font-weight:500;color:var(--gun-mid);letter-spacing:.02em}
 .tier .btn{width:100%;justify-content:center;margin-top:auto;padding-top:1em}
 .tier .tick-list{margin-bottom:1.7rem}
-@media (max-width:900px){.price-grid{grid-template-columns:1fr}}
+@media (max-width:900px){.price-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.price-grid{grid-template-columns:1fr}}
 
 /* ---------- faq ---------- */
 .faq{max-width:760px}

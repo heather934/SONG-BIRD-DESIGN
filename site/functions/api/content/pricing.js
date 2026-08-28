@@ -9,7 +9,7 @@ const DEFAULT_PRICING = [
     id: 'starter-nest',
     name: 'The Starter Nest',
     subtitle: 'One page, done properly',
-    amount: '800',
+    amount: '100',
     unit: '',
     featured: false,
     features: [
@@ -25,7 +25,7 @@ const DEFAULT_PRICING = [
     id: 'rebuild',
     name: 'The Rebuild',
     subtitle: "Replace what's not working",
-    amount: '1,200',
+    amount: '150',
     unit: '',
     featured: false,
     features: [
@@ -41,7 +41,7 @@ const DEFAULT_PRICING = [
     id: 'full-build',
     name: 'The Full Build',
     subtitle: 'Five to seven pages',
-    amount: '1,600',
+    amount: '200',
     unit: '',
     featured: true,
     features: [

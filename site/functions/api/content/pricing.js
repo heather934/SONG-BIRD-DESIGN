@@ -68,6 +68,21 @@ const DEFAULT_PRICING = [
     ],
     ctaLabel: 'Add it on',
   },
+  {
+    id: 'social-media',
+    name: 'Social Media Management',
+    subtitle: 'Yearly, cancel anytime',
+    amount: '50',
+    unit: '/ year',
+    featured: false,
+    features: [
+      'You send the photos and video',
+      'Posted across all your social accounts',
+      'Consistent posting schedule',
+      'One less thing to manage yourself',
+    ],
+    ctaLabel: 'Add it on',
+  },
 ];
 
 export async function onRequestGet(context) {

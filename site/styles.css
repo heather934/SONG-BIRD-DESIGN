@@ -495,6 +495,7 @@ details p{margin:0 0 1.3rem;font-size:.95rem;color:#4a453e;max-width:62ch}
   background:rgba(92,107,69,.1);font-size:.92rem;color:#3d4a2c;
 }
 .sent.show{display:block}
+.sent.err{border-left-color:var(--lacquer);background:rgba(138,22,34,.08);color:var(--lacquer-deep)}
 .detail{margin-bottom:1.6rem}
 .detail dt{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gun-mid);margin-bottom:.3rem;font-weight:600}
 .detail dd{margin:0;font-size:1.02rem}

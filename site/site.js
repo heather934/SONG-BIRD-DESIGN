@@ -505,8 +505,36 @@
     form.addEventListener('submit', function(ev){
       ev.preventDefault();
       if (!form.checkValidity()){ form.reportValidity(); return; }
-      document.getElementById('sent').classList.add('show');
-      form.querySelector('button[type=submit]').textContent = 'Sent';
+      var sentNote = document.getElementById('sent');
+      var errorNote = document.getElementById('enquiryError');
+      var btn = form.querySelector('button[type=submit]');
+      var originalLabel = btn.textContent;
+      errorNote.classList.remove('show');
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+      var data = new FormData(form);
+      fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: data.get('name'),
+          business: data.get('business'),
+          email: data.get('email'),
+          need: data.get('need'),
+          message: data.get('message'),
+          website: data.get('website'),
+        }),
+      }).then(function (r) {
+        return r.json().catch(function () { return {}; }).then(function (json) {
+          if (!r.ok || json.ok === false) throw new Error();
+          sentNote.classList.add('show');
+          btn.textContent = 'Sent';
+        });
+      }).catch(function () {
+        errorNote.classList.add('show');
+        btn.disabled = false;
+        btn.textContent = originalLabel;
+      });
     });
   }
 })();

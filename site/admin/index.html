@@ -227,10 +227,13 @@ textarea{min-height:70px;resize:vertical}
   // pricing pre-filled, ready to edit — never a blank dead-end panel.
   var DEFAULT_PRICING_FALLBACK = [
     { id: 'starter-nest', name: 'The Starter Nest', subtitle: 'One page, done properly',
-      amount: '1,800', unit: '', featured: false, ctaLabel: 'Start here',
+      amount: '800', unit: '', featured: false, ctaLabel: 'Start here',
       features: ['One long page with sections', 'Contact form and map', 'Photo editing included', 'Live in about two weeks'] },
+    { id: 'rebuild', name: 'The Rebuild', subtitle: "Replace what's not working",
+      amount: '1,200', unit: '', featured: false, ctaLabel: 'Start the rebuild',
+      features: ['Speed and mobile fixes', 'Same links, no lost traffic', 'Domain and email untangled', 'You get the keys, in writing'] },
     { id: 'full-build', name: 'The Full Build', subtitle: 'Five to seven pages',
-      amount: '3,600', unit: '', featured: true, ctaLabel: 'Schedule a call',
+      amount: '1,600', unit: '', featured: true, ctaLabel: 'Schedule a call',
       features: ['Services, about, gallery, contact', 'Copy written with you', 'Local search setup', 'Two rounds of notes', 'Thirty days of free tweaks'] },
     { id: 'care-and-feeding', name: 'Care & Feeding', subtitle: 'Monthly, cancel anytime',
       amount: '65', unit: '/ month', featured: false, ctaLabel: 'Add it on',
@@ -516,7 +519,7 @@ textarea{min-height:70px;resize:vertical}
           '<div><label>Subtitle</label><input type="text" data-f="subtitle" value="' + esc(tier.subtitle) + '"></div>' +
         '</div>' +
         '<div class="row2">' +
-          '<div><label>Amount (numbers only)</label><input type="text" data-f="amount" value="' + esc(tier.amount) + '" placeholder="e.g. 3,600"></div>' +
+          '<div><label>Amount (numbers only)</label><input type="text" data-f="amount" value="' + esc(tier.amount) + '" placeholder="e.g. 1,600"></div>' +
           '<div><label>Unit (optional)</label><input type="text" data-f="unit" value="' + esc(tier.unit) + '" placeholder="e.g. / month"></div>' +
         '</div>' +
         '<label>Features (one per line)</label>' +

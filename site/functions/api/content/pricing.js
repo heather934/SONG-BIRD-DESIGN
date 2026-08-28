@@ -9,7 +9,7 @@ const DEFAULT_PRICING = [
     id: 'starter-nest',
     name: 'The Starter Nest',
     subtitle: 'One page, done properly',
-    amount: '1,800',
+    amount: '800',
     unit: '',
     featured: false,
     features: [
@@ -21,10 +21,25 @@ const DEFAULT_PRICING = [
     ctaLabel: 'Start here',
   },
   {
+    id: 'rebuild',
+    name: 'The Rebuild',
+    subtitle: "Replace what's not working",
+    amount: '1,200',
+    unit: '',
+    featured: false,
+    features: [
+      'Speed and mobile fixes',
+      'Same links, no lost traffic',
+      'Domain and email untangled',
+      'You get the keys, in writing',
+    ],
+    ctaLabel: 'Start the rebuild',
+  },
+  {
     id: 'full-build',
     name: 'The Full Build',
     subtitle: 'Five to seven pages',
-    amount: '3,600',
+    amount: '1,600',
     unit: '',
     featured: true,
     features: [

@@ -135,7 +135,7 @@ textarea{min-height:70px;resize:vertical}
       <h3>Contact info</h3>
       <div class="row2">
         <div><label>Email</label><input type="text" id="contactEmailIn"></div>
-        <div><label>Phone</label><input type="text" id="contactPhoneIn" placeholder="(864) 555-0142"></div>
+        <div><label>WhatsApp handle</label><input type="text" id="contactWhatsappIn" placeholder="@yourbusiness"></div>
       </div>
       <div class="row2">
         <div><label>Hours</label><input type="text" id="contactHoursIn"></div>
@@ -311,7 +311,7 @@ textarea{min-height:70px;resize:vertical}
     ],
     contact: {
       email: 'hello@songbirddesign.com',
-      phone: '(864) 555-0142',
+      whatsapp: '@songbirdpublishingllc',
       hours: 'Monday to Friday, 9\u20135 Eastern',
       takingOn: 'Two builds a month, booking four weeks out',
     },
@@ -399,7 +399,7 @@ textarea{min-height:70px;resize:vertical}
     document.getElementById('heroLedeIn').value = siteData.hero.lede || '';
     document.getElementById('heroNoteIn').value = siteData.hero.note || '';
     document.getElementById('contactEmailIn').value = siteData.contact.email || '';
-    document.getElementById('contactPhoneIn').value = siteData.contact.phone || '';
+    document.getElementById('contactWhatsappIn').value = siteData.contact.whatsapp || '';
     document.getElementById('contactHoursIn').value = siteData.contact.hours || '';
     document.getElementById('contactTakingOnIn').value = siteData.contact.takingOn || '';
 
@@ -430,7 +430,7 @@ textarea{min-height:70px;resize:vertical}
       faq: siteData.faq,
       contact: {
         email: document.getElementById('contactEmailIn').value,
-        phone: document.getElementById('contactPhoneIn').value,
+        whatsapp: document.getElementById('contactWhatsappIn').value,
         hours: document.getElementById('contactHoursIn').value,
         takingOn: document.getElementById('contactTakingOnIn').value,
       },

@@ -185,11 +185,7 @@
       if (site.contact) {
         var email = document.getElementById('contactEmail');
         if (email && site.contact.email) { email.textContent = site.contact.email; email.href = 'mailto:' + site.contact.email; }
-        var phone = document.getElementById('contactPhone');
-        if (phone && site.contact.phone) {
-          phone.textContent = site.contact.phone;
-          phone.href = 'tel:+1' + site.contact.phone.replace(/\D/g, '');
-        }
+        setText('contactWhatsapp', site.contact.whatsapp);
         setText('contactHours', site.contact.hours);
         setText('contactTakingOn', site.contact.takingOn);
       }

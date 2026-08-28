@@ -67,7 +67,7 @@ export async function onRequestPut(context) {
     })).filter((f) => f.question && f.answer),
     contact: {
       email: clean((body.contact || {}).email, 120),
-      phone: clean((body.contact || {}).phone, 40),
+      whatsapp: clean((body.contact || {}).whatsapp, 40),
       hours: clean((body.contact || {}).hours, 120),
       takingOn: clean((body.contact || {}).takingOn, 160),
     },

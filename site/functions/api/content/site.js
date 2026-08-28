@@ -50,7 +50,7 @@ const DEFAULT_SITE = {
   ],
   contact: {
     email: 'hello@songbirddesign.com',
-    phone: '(864) 555-0142',
+    whatsapp: '@songbirdpublishingllc',
     hours: 'Monday to Friday, 9\u20135 Eastern',
     takingOn: 'Two builds a month, booking four weeks out',
   },

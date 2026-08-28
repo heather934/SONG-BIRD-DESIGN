@@ -99,7 +99,6 @@ textarea{min-height:70px;resize:vertical}
         Hero, the three service cards, the four process steps, FAQ, and contact info.
         Work samples and pricing have their own tabs.
       </p>
-      <span class="save-note" id="siteSaveNote"></span>
     </div>
 
     <div class="card">
@@ -145,7 +144,7 @@ textarea{min-height:70px;resize:vertical}
     </div>
 
     <div class="item-actions">
-      <span></span>
+      <span class="save-note" id="siteSaveNote"></span>
       <button class="btn btn-primary" id="saveSiteBtn">Save changes</button>
     </div>
   </section>
@@ -156,12 +155,11 @@ textarea{min-height:70px;resize:vertical}
         These are the extra cards in the "Recent builds" grid. Under Pressure and the Riverbend
         demo are pinned on the site itself and aren't edited here.
       </p>
-      <span class="save-note" id="workSaveNote"></span>
     </div>
     <div id="workList" class="loading">Loading&hellip;</div>
     <button class="btn btn-ghost" id="addWorkBtn" style="margin-top:.5rem">+ Add a work sample</button>
     <div class="item-actions">
-      <span></span>
+      <span class="save-note" id="workSaveNote"></span>
       <button class="btn btn-primary" id="saveWorkBtn">Save changes</button>
     </div>
   </section>
@@ -170,11 +168,10 @@ textarea{min-height:70px;resize:vertical}
   <section class="panel" id="panel-pricing">
     <div class="toolbar">
       <p class="small-note" style="margin:0">All three tiers are edited here. Changes go live as soon as you save.</p>
-      <span class="save-note" id="pricingSaveNote"></span>
     </div>
     <div id="pricingList" class="loading">Loading&hellip;</div>
     <div class="item-actions">
-      <span></span>
+      <span class="save-note" id="pricingSaveNote"></span>
       <button class="btn btn-primary" id="savePricingBtn">Save changes</button>
     </div>
   </section>
@@ -185,7 +182,6 @@ textarea{min-height:70px;resize:vertical}
       <p class="small-note" style="margin:0">
         Click a slot to block it off. This adds to the scheduler's normal pattern — it doesn't replace it.
       </p>
-      <span class="save-note" id="scheduleSaveNote"></span>
     </div>
     <div class="card">
       <div class="sched-week-nav">
@@ -210,7 +206,7 @@ textarea{min-height:70px;resize:vertical}
       <div id="closedDatesList" style="margin-top:1rem"></div>
     </div>
     <div class="item-actions">
-      <span></span>
+      <span class="save-note" id="scheduleSaveNote"></span>
       <button class="btn btn-primary" id="saveScheduleBtn">Save changes</button>
     </div>
   </section>
@@ -255,7 +251,8 @@ textarea{min-height:70px;resize:vertical}
   function flash(el, ok, msg) {
     el.textContent = msg;
     el.className = 'save-note' + (ok ? '' : ' err');
-    setTimeout(function () { el.textContent = ''; }, 3500);
+    el.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    setTimeout(function () { el.textContent = ''; }, ok ? 3500 : 12000);
   }
 
   // ---- who am I ----

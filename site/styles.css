@@ -377,21 +377,6 @@ section{padding-block:clamp(64px,9vw,116px);scroll-margin-top:78px}
 .proj-link{position:absolute;inset:0;z-index:3}
 .proj-link span{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
 
-/* admin-panel mock, in the demo's own rose palette */
-.adm{position:absolute;inset:20px 0 0;display:flex;background:#FDF8F9}
-.adm-side{width:26%;background:#F6E9EE;border-right:1px solid #EBD8DF;padding:10px 8px;display:flex;flex-direction:column;gap:7px}
-.adm-side i{display:block;height:5px;border-radius:1px;background:rgba(59,42,51,.15)}
-.adm-side i:first-child{height:8px;margin-bottom:4px;background:rgba(194,94,134,.5)}
-.adm-side i.on{background:#C25E86;opacity:.85}
-.adm-main{flex:1;padding:10px 11px 12px;display:flex;flex-direction:column;gap:8px}
-.adm-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:5px}
-.adm-tiles span{height:34px;background:#fff;border:1px solid #EBD8DF;border-top:2px solid #C25E86;border-radius:1px}
-.adm-tiles span:nth-child(2){border-top-color:#8257B8}
-.adm-tiles span:nth-child(3){border-top-color:#4A9E6B}
-.adm-rows{flex:1;display:flex;flex-direction:column;gap:5px}
-.adm-rows span{flex:0 0 14px;background:#fff;border:1px solid #EBD8DF;border-left:2px solid #C25E86;border-radius:1px}
-.adm-rows span:nth-child(3){border-left-color:#8257B8}
-
 .proj-body{padding:1.35rem 1.4rem 1.5rem}
 .proj-body h3{font-size:1.08rem;margin-bottom:.3em}
 .proj-body .type{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gun-mid);display:block;margin-bottom:.9rem}

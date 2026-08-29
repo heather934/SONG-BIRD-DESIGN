@@ -17,6 +17,7 @@ const DEFAULT_WORK = [
     result: 'Just launched \u2014 live and taking bookings',
     url: 'https://skinbykassie.com',
     gradient: 'linear-gradient(145deg,#9a7c8a,#5c3f4a)',
+    image: 'assets/work-skinbykassie.webp',
   },
 ];
 

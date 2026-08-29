@@ -12,8 +12,8 @@
   --marble:#F6F4F0;
   --ink:#221F1B;
 
-  --display:"Caveat","Comic Sans MS",cursive;
-  --body:"Caveat","Comic Sans MS",cursive;
+  --display:"Newsreader",Georgia,"Times New Roman",serif;
+  --body:"Figtree","Helvetica Neue",Arial,sans-serif;
 
   --wrap:1160px;
   --gut:clamp(20px,5vw,48px);

@@ -54,6 +54,7 @@ export async function onRequestPut(context) {
     result: clean(item.result, 160),
     url: clean(item.url, 300),
     gradient: clean(item.gradient, 200) || 'linear-gradient(145deg,#8a9a78,#5c6b45)',
+    image: clean(item.image, 300),
   }));
 
   await context.env.CONTENT.put(KEY, JSON.stringify(cleaned));

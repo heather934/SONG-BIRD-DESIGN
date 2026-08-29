@@ -209,16 +209,19 @@
         var titleHtml = item.url
           ? '<a href="' + item.url + '" target="_blank" rel="noopener">' + item.title + '</a>'
           : item.title;
+        var mockHtml = item.image
+          ? '<div class="mock"><img src="' + item.image + '" alt="' + item.title + ' homepage" loading="lazy"></div>'
+          : '<div class="mock">' +
+              '<div class="hero-blk" style="background:' + item.gradient + '"></div>' +
+              '<div class="band w88"></div>' +
+              '<div class="row"><span></span><span></span></div>' +
+              '<div class="band w45"></div>' +
+            '</div>';
         return (
           '<article class="proj rv seen">' +
             '<div class="screen">' + badge + link +
               '<div class="bar"><i></i><i></i><i></i></div>' +
-              '<div class="mock">' +
-                '<div class="hero-blk" style="background:' + item.gradient + '"></div>' +
-                '<div class="band w88"></div>' +
-                '<div class="row"><span></span><span></span></div>' +
-                '<div class="band w45"></div>' +
-              '</div>' +
+              mockHtml +
             '</div>' +
             '<div class="proj-body">' +
               '<span class="type">' + item.type + '</span>' +
